@@ -15,7 +15,8 @@ st.set_page_config(page_title="SmartResearch Advisor", layout="centered")
 nltk.download('punkt')
 nltk.download('stopwords')
 STOP = set(stopwords.words("english"))
-nlp = spacy.load("en_core_web_sm")
+import en_core_web_sm
+nlp = en_core_web_sm.load()
 EMB_MODEL = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 
 # ---------------------------
