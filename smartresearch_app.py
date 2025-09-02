@@ -17,7 +17,16 @@ nltk.download('stopwords')
 STOP = set(stopwords.words("english"))
 import en_core_web_sm
 nlp = en_core_web_sm.load()
-EMB_MODEL = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
+import torch
+from sentence_transformers import SentenceTransformer
+
+# Ensure torch uses CPU safely
+torch.set_default_dtype(torch.float32)
+
+# Load embeddings model on CPU
+EMB_MODEL = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2", device="cpu")
+
+
 
 # ---------------------------
 # DATA FUNCTIONS
